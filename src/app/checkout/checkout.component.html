@@ -1,0 +1,249 @@
+<div class="container">
+  <h4 class="pb-2">Checkout Form - Using Reactive Form</h4>
+  <form [formGroup]="checkoutForm" (ngSubmit)="postData()">
+    <!-- EMAIL - start -->
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input
+          type="email"
+          class="form-control"
+          id="inputEmail3"
+          formControlName="emailAddr"
+          required
+        />
+        <!-- placeholder="Email" -->
+        <span
+          *ngIf="
+            checkoutForm.get('emailAddr').touched &&
+            checkoutForm.get('emailAddr').hasError('required')
+          "
+          style="color: cadetblue"
+          >Enter email address <br />
+        </span>
+        <span
+          *ngIf="
+            checkoutForm.get('emailAddr').touched &&
+            checkoutForm.get('emailAddr').hasError('minlength')
+          "
+          style="color: cadetblue"
+        >
+          Enter minimum 5 characters <br />
+        </span>
+        <span
+          *ngIf="checkoutForm.get('emailAddr').hasError('maxlength')"
+          style="color: cadetblue"
+        >
+          Not more than 18 character suppoted <br />
+        </span>
+        <span
+          *ngIf="
+            checkoutForm.get('emailAddr').touched &&
+            checkoutForm.get('emailAddr').hasError('email')
+          "
+          style="color: cadetblue"
+          >Enter valid email address <br />
+        </span>
+        <span
+          *ngIf="
+            checkoutForm.get('emailAddr').touched &&
+            checkoutForm.get('emailAddr').hasError('emailContainNoDot')
+          "
+          style="color: cadetblue"
+          >Email contains no dot
+        </span>
+      </div>
+    </div>
+    <!-- EMAIL - end -->
+    <!-- PASSWORD - start -->
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label"
+        >Password</label
+      >
+      <div class="col-sm-10">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+          required
+        />
+        <!-- placeholder="Password" -->
+        <span
+          *ngIf="
+            checkoutForm.get('password').touched &&
+            checkoutForm.get('password').hasError('required')
+          "
+          style="color: cadetblue"
+          >Enter password <br />
+        </span>
+        <!-- <span
+          *ngIf="
+            checkoutForm.get('password').touched &&
+            (checkoutForm.get('password').hasError('noCapitalLetter') ||
+              checkoutForm.get('password').hasError('noSmallLetter') ||
+              checkoutForm.get('password').hasError('noNumber') ||
+              checkoutForm.get('password').hasError('noSpecialCharacter'))
+          "
+          style="color: cadetblue"
+          >Password must contain one capital letter, one small letter, one
+          number, one special character <br />
+        </span> -->
+        <span
+          *ngIf="
+            checkoutForm.get('password').touched &&
+            checkoutForm.get('password').hasError('noCapitalLetter')
+          "
+          style="color: cadetblue"
+          >* should contain one capital letter<br />
+        </span>
+        <span
+          *ngIf="
+            checkoutForm.get('password').touched &&
+            checkoutForm.get('password').hasError('noSmallLetter')
+          "
+          style="color: cadetblue"
+          >* should contain one lowercase letter<br />
+        </span>
+        <span
+          *ngIf="
+            checkoutForm.get('password').touched &&
+            checkoutForm.get('password').hasError('noNumber')
+          "
+          style="color: cadetblue"
+          >* should contain one number<br />
+        </span>
+        <span
+          *ngIf="
+            checkoutForm.get('password').touched &&
+            checkoutForm.get('password').hasError('noSpecialCharacter')
+          "
+          style="color: cadetblue"
+          >* should contain one special character <br />
+        </span>
+      </div>
+    </div>
+    <!-- PASSWORD - end -->
+    <!-- CONFIRM PASSWORD - start -->
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label"
+        >Confirm Password</label
+      >
+      <div class="col-sm-10">
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="confirm_password"
+          required
+        />
+        <!-- placeholder="Confirm Password" -->
+        <span
+          *ngIf="
+            checkoutForm.get('confirm_password').touched &&
+            checkoutForm.get('confirm_password').hasError('required')
+          "
+          style="color: cadetblue"
+          >Confirm password is unfilled <br />
+        </span>
+        <span
+          *ngIf="
+            checkoutForm.get('confirm_password').touched &&
+            checkoutForm.get('confirm_password').hasError('notEqualToPassword')
+          "
+          style="color: cadetblue"
+          >Retype password is wrong</span
+        >
+      </div>
+    </div>
+    <!-- CONFIRM PASSWORD - end -->
+    <!-- WEBSITE - start -->
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label"
+        >Website</label
+      >
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="website"
+          formControlName="website"
+          required
+        />
+        <!-- placeholder="name of your website" -->
+        <span
+          *ngIf="
+            checkoutForm.get('website').touched &&
+            checkoutForm.get('website').hasError('websiteInvalid')
+          "
+          style="color: cadetblue"
+          >* invalid website name</span
+        >
+      </div>
+    </div>
+    <!-- WEBSITE - end -->
+    <!-- PHONE NUMBER - start -->
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label"
+        >Phone Number</label
+      >
+      <div class="col-sm-10">
+        <input
+          type="text"
+          class="form-control"
+          id="phoneNumber"
+          formControlName="phoneNumber"
+          required
+        />
+        <!-- placeholder="Phone number" -->
+        <span
+          *ngIf="
+            checkoutForm.get('phoneNumber').touched &&
+            checkoutForm.get('phoneNumber').hasError('required')
+          "
+          style="color: cadetblue"
+          >Phone number is unfilled</span
+        >
+        <span
+          *ngIf="
+            checkoutForm.get('phoneNumber').touched &&
+            checkoutForm.get('phoneNumber').hasError('phoneNumberInvalid')
+          "
+          style="color: cadetblue"
+          >Exact 10 digits can be filled</span
+        >
+      </div>
+    </div>
+    <!-- PHONE NUMBER - end -->
+    <!-- TERMS - start -->
+    <div class="form-group row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            id="gridCheck1"
+            formControlName="terms"
+            required
+          />
+          <label class="form-check-label" for="gridCheck1">
+            Agree to Terms
+          </label>
+        </div>
+      </div>
+    </div>
+    <!-- TERMS - end -->
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button
+          type="submit"
+          class="btn btn-primary"
+          [disabled]="!checkoutForm.valid"
+        >
+          Checkout
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

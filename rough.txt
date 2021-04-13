@@ -1,0 +1,18 @@
+- Create the custom validators here 
+- then place it one by one to the original website
+
+- Custom validators to Create   
+    - Email 
+        - should contain ( @ ) & ( . ) - no need of customer validator, angular contains in-built validator - done
+
+    - Password
+        - should contain one capital letter, one lowercase letter, one number, one special character
+        - put eye in Password
+
+    - Confirm Password
+        - should be equal to Password
+
+    - website
+        - should contain two dots
+        - there should be atleaset one character after a dot 
+

@@ -1,0 +1,32 @@
+HOW TO USE REACTIVE FORMS
+
+- Step #1: Import and add the ReactiveFormsModule in the app.module.ts
+    - For reactive forms - ReactiveFormsModule needs to be imported
+    - If we do not import this, we will get error
+    - Add the module into the array list of imports
+    
+- Step #2: Create the form in _____.component.html 
+    - FormGroup
+        - We need to use the directive FormGroup for the entire form and give it a name
+    - formControlName   
+        - Every form field should have a "formControlName" attribute
+    - <form [formGroup = "registerForm"] (ngSubmit)="postData()">
+    -   <input type="text" formControlName="fname">
+    -   <input type="text" formControlName="lname">
+    -   <input type="email" formControlName="email">
+    -   <input type="submit" value="Post Data" [disabled]="!registerForm.valid">
+    - </form> 
+
+- Step #3: In the component class - import the required modules
+    - import { Component, OnInit } from 'angular/core'
+    - import { FormBuilder, FormGroup, FormControl, NgForm, Validators } from 'angular/forms'
+
+- Step #4: Inject the FormBuilder in the constructor
+    - constructor(private formBuilder: FormBuilder)
+    - you can have any name instead of formBuilder 
+
+- Step #5: Create the form instance
+    - this.formName = formBuilder.group({
+        fname: new FormControl(),
+        lname: new FormControl()
+    });

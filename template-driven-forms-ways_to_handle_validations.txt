@@ -1,0 +1,12 @@
+WAYS TO HANDLE VALIDATIONS IN TEMPLATE DRIVEN FORMS
+
+- Highlighting the errors
+    input.ng-invalid.ng-touched {
+        background-color: red
+    }
+
+- Disabling the Submit Button
+    By adding attribute [disabled]="!formName.valid"
+
+- Custom Field Level Validation - Show Hide Errors Messages
+    <span *ngIf="firstname.touched&&!firstname.valid">Please enter email</span>
